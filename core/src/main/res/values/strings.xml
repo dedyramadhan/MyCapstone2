@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image">Image Film</string>
+    <string name="title_placeholder">Detail Title</string>
+    <string name="image_url_string">https://image.tmdb.org/t/p/w500%s</string>
+    <string name="image_url_string_original">https://image.tmdb.org/t/p/original%s</string>
+    <string name="favorite_not_found">Empty Data !!!</string>
+
+</resources>

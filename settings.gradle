@@ -1,0 +1,4 @@
+rootProject.name = "MyCapstone2"
+include ':favorite'
+include ':core'
+include ':app'

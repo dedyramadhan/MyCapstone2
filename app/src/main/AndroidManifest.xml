@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mysub2e.capstoneproject2">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.mysub2e.capstoneproject2.ui.BaseApplication"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_tmdb"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.capstoneproject2.NoActionBar">
+        <activity
+            android:name="com.mysub2e.capstoneproject2.ui.SplashScreenActivity"
+            android:theme="@style/Theme.capstoneproject2.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.mysub2e.capstoneproject2.ui.MainActivity" />
+        <activity android:name="com.mysub2e.capstoneproject2.ui.detail.DetailMovieActivity" />
+
+    </application>
+
+</manifest>
