@@ -6,4 +6,5 @@ data class ListMovieResponse(
 
     @field:SerializedName("results")
     val results: List<MovieResponse>
+
 )

@@ -13,13 +13,14 @@ import java.util.concurrent.TimeUnit
 
 @Module
 class NetworkModule {
+
     @Provides
     fun provideApiService(client: OkHttpClient): ApiService {
         val retrofit = Retrofit.Builder()
-                .baseUrl(BuildConfig.base_url)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build()
+            .baseUrl(BuildConfig.base_url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
         return retrofit.create(ApiService::class.java)
     }
 
@@ -27,16 +28,16 @@ class NetworkModule {
     fun provideOkHttpClient(): OkHttpClient {
         val hostname = BuildConfig.host_name
         val certificate = CertificatePinner.Builder()
-                .add(hostname, BuildConfig.pin_certificate_1)
-                .add(hostname, BuildConfig.pin_certificate_2)
-                .add(hostname, BuildConfig.pin_certificate_3)
-                .build()
+            .add(hostname, BuildConfig.pin_certificate_1)
+            .add(hostname, BuildConfig.pin_certificate_2)
+            .add(hostname, BuildConfig.pin_certificate_3)
+            .build()
         return OkHttpClient.Builder()
-                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .connectTimeout(15, TimeUnit.MINUTES)
-                .readTimeout(15, TimeUnit.MINUTES)
-                .certificatePinner(certificate)
-                .build()
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .connectTimeout(15, TimeUnit.MINUTES)
+            .readTimeout(15, TimeUnit.MINUTES)
+            .certificatePinner(certificate)
+            .build()
     }
 
 }

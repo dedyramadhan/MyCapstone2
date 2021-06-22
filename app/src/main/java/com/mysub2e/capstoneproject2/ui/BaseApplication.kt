@@ -6,6 +6,7 @@ import com.mysub2e.capstoneproject2.di.AppComponent
 import com.mysub2e.capstoneproject2.di.DaggerAppComponent
 
 open class BaseApplication : Application() {
+
     val appComponent: AppComponent by lazy {
         DaggerAppComponent.builder().coreComponent(coreComponent).build()
     }
@@ -13,6 +14,5 @@ open class BaseApplication : Application() {
     private val coreComponent by lazy {
         DaggerCoreComponent.builder().context(this).build()
     }
-
 
 }

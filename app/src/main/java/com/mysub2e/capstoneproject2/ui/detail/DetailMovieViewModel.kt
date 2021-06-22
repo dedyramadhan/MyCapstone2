@@ -23,5 +23,4 @@ class DetailMovieViewModel @Inject constructor(private val moviesUseCase: Movies
         moviesUseCase.getMovieDetailByMovieId(movieIds).asLiveData()
     }
 
-
 }

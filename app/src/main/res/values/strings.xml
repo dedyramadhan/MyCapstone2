@@ -8,9 +8,8 @@
     <string name="oops_something_went_wrong">Oops.. something went wrong</string>
     <string name="no_Fragment_Found">No Fragment Found</string>
     <string name="splashscreen">Image SplashScreen</string>
-    <string name="description_title">Description</string>
-    <string name="detail_desc">description text</string>
+    <string name="synopsis_text">Synopsis text</string>
     <string name="floating_favorite">Floating Favorite</string>
-    <string name="title_favorite">Title Favorite</string>
+    <string name="synopsis">Synopsis</string>
 
 </resources>

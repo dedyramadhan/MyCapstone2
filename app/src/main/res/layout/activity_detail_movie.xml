@@ -101,13 +101,14 @@
 
                 <TextView
                     android:id="@+id/tv_title_detail_movie"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="20dp"
-                    android:fontFamily="monospace"
-                    android:text="@string/title_placeholder"
+                    android:fontFamily="@font/fuse_black"
+                    android:gravity="center"
+                    android:text="@string/title"
                     android:textColor="@color/dark_blue"
                     android:textSize="20sp" />
 
@@ -126,25 +127,31 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-                            android:fontFamily="monospace"
-                            android:gravity="center"
-                            android:text="@string/description_title"
+                            android:fontFamily="@font/fuse_black"
+                            android:text="@string/synopsis"
                             android:textColor="@color/dark_blue"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_detail_description"
+                            android:id="@+id/tv_synopsis"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-                            android:fontFamily="monospace"
-                            android:gravity="center"
-                            android:text="@string/detail_desc"
-                            android:textColor="@color/dark_blue" />
+                            android:fontFamily="@font/fuse_black"
+                            android:justificationMode="inter_word"
+                            android:text="@string/synopsis_text"
+                            android:textColor="@color/dark_blue"
+                            android:textSize="16sp"
+                            tools:targetApi="o" />
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
+
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.core.widget.NestedScrollView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

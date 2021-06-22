@@ -8,9 +8,11 @@ import dagger.Component
 interface FavoriteComponent {
 
     fun inject(fragment: FavoriteFragment)
+
     @Component.Builder
     interface Builder {
         fun appComponent(appComponent: AppComponent): Builder
         fun build(): FavoriteComponent
     }
+
 }

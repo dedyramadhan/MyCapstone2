@@ -8,4 +8,5 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val moviesUseCase: MoviesUseCase) : ViewModel() {
 
     val movies = moviesUseCase.getAllMovies().asLiveData()
+
 }

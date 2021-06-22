@@ -17,18 +17,18 @@ import javax.inject.Inject
 
 @CoreScope
 class MovieRepository @Inject constructor(
-        private val localData: LocalDataSource,
-        private val remoteData: RemoteDataSource,
-        private val appExecutors: AppExecutors
-): IMovieRepository{
-
+    private val localData: LocalDataSource,
+    private val remoteData: RemoteDataSource,
+    private val appExecutors: AppExecutors
+) : IMovieRepository {
 
     override fun getMovieDetailByMovieId(movieId: Int): Flow<Resource<List<MovieModel>>> =
         object : NetworkBoundResource<List<MovieModel>, List<MovieResponse>>() {
 
-
             override fun loadFromDB(): Flow<List<MovieModel>> {
-                return localData.getMovieDetailByMovieId(movieId).map { DataMapper.mapMovieEntitiesToDomains(it) }
+                return localData.getMovieDetailByMovieId(movieId).map {
+                    DataMapper.mapMovieEntitiesToDomains(it)
+                }
             }
 
             override fun shouldFetch(data: List<MovieModel>?): Boolean {
@@ -44,7 +44,9 @@ class MovieRepository @Inject constructor(
             override suspend fun saveCallResult(data: List<MovieResponse>) {
                 val movieEntities = DataMapper.mapMovieResponsesToEntities(data)
                 for (movie in movieEntities) {
-                    appExecutors.diskIO().execute { localData.setUpdateDetailMovie(movie) }
+                    appExecutors.diskIO().execute {
+                        localData.setUpdateDetailMovie(movie)
+                    }
                 }
             }
         }.asFlow()
@@ -53,7 +55,9 @@ class MovieRepository @Inject constructor(
             object : NetworkBoundResource<List<MovieModel>, List<MovieResponse>>() {
 
                 override fun loadFromDB(): Flow<List<MovieModel>> {
-                    return localData.getAllMovies().map { DataMapper.mapMovieEntitiesToDomains(it) }
+                    return localData.getAllMovies().map {
+                        DataMapper.mapMovieEntitiesToDomains(it)
+                    }
                 }
 
                 override fun shouldFetch(data: List<MovieModel>?): Boolean {
@@ -63,14 +67,17 @@ class MovieRepository @Inject constructor(
                             if (data[0].movieDate == DataMapper.getTodayDate()) {
                                 isFetch = false
                             } else {
-                                appExecutors.diskIO().execute { localData.deleteMovie(data[0].movieDate) }
+                                appExecutors.diskIO().execute {
+                                    localData.deleteMovie(data[0].movieDate)
+                                }
                             }
                         }
                     }
                     return isFetch
                 }
 
-                override suspend fun createCall(): Flow<ApiResponse<List<MovieResponse>>> = remoteData.getAllMovies()
+                override suspend fun createCall(): Flow<ApiResponse<List<MovieResponse>>> =
+                    remoteData.getAllMovies()
 
                 override suspend fun saveCallResult(data: List<MovieResponse>) {
                     val movieList = DataMapper.mapMovieResponsesToEntities(data)
@@ -80,10 +87,15 @@ class MovieRepository @Inject constructor(
 
     override fun setFavoriteMovie(movieData: MovieModel, state: Boolean) {
         val movieEntity = DataMapper.mapMovieDomainToEntity(movieData)
-        appExecutors.diskIO().execute { localData.setFavoriteMovie(movieEntity, state) }
+        appExecutors.diskIO().execute {
+            localData.setFavoriteMovie(movieEntity, state)
+        }
     }
+
     override fun getFavoriteMovie(): Flow<List<MovieModel>> {
-        return localData.getFavoriteMovie().map { DataMapper.mapMovieEntitiesToDomains(it) }
+        return localData.getFavoriteMovie().map {
+            DataMapper.mapMovieEntitiesToDomains(it)
+        }
     }
 
 

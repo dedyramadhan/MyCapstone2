@@ -90,7 +90,6 @@ class HomeFragment : Fragment(), MovieAdapterClickListener {
         setHasOptionsMenu(true)
     }
 
-
     private fun visibleView(theView: View) {
         _binding.rvMovies.visibility = if (_binding.rvMovies == theView) {
             View.VISIBLE

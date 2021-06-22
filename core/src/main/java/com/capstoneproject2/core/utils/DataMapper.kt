@@ -39,7 +39,6 @@ object DataMapper {
         )
     }
 
-
     fun mapMovieDomainToEntity(input: MovieModel) = MovieEntity(
             movieId = input.movieId,
             movieTitle = input.movieTitle,
@@ -51,4 +50,5 @@ object DataMapper {
             movieTodayDate = input.movieDate,
             movieIsHomeResult = input.movieIsHomeResult
     )
+
 }

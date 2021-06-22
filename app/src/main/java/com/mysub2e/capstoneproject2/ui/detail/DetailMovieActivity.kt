@@ -18,17 +18,12 @@ class DetailMovieActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailMovieBinding
 
-    companion object {
-        const val EXTRA_DATA = "extra_movie_data"
-    }
-
     @Inject
     lateinit var viewmodelFactory: ViewModelFactory
 
     private val detailMoviesViewModel: DetailMovieViewModel by viewModels {
         viewmodelFactory
     }
-
 
     private fun setUpFab(movieData: MovieModel) {
         var statusFavorite = movieData.movieIsFavorite
@@ -43,7 +38,7 @@ class DetailMovieActivity : AppCompatActivity() {
             binding.fabDetailMovie.setImageDrawable(
                 ContextCompat.getDrawable(
                     this,
-                    R.drawable.ic_favorite
+                    R.drawable.ic_unfavorite
                 )
             )
         }
@@ -63,13 +58,12 @@ class DetailMovieActivity : AppCompatActivity() {
                 binding.fabDetailMovie.setImageDrawable(
                     ContextCompat.getDrawable(
                         this,
-                        R.drawable.ic_favorite
+                        R.drawable.ic_unfavorite
                     )
                 )
             }
         }
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as BaseApplication).appComponent.inject(this)
@@ -96,7 +90,7 @@ class DetailMovieActivity : AppCompatActivity() {
                             if (!movies.data.isNullOrEmpty()) {
                                 val movie = movies.data?.get(0) as MovieModel
                                 binding.tvTitleDetailMovie.text = movie.movieTitle
-                                binding.tvDetailDescription.text = movie.movieDescription
+                                binding.tvSynopsis.text = movie.movieDescription
                                 Glide.with(this)
                                     .load(
                                         resources.getString(
@@ -128,4 +122,9 @@ class DetailMovieActivity : AppCompatActivity() {
             })
         }
     }
+
+    companion object {
+        const val EXTRA_DATA = "extra_movie_data"
+    }
+
 }

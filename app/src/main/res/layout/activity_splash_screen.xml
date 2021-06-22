@@ -7,7 +7,7 @@
     tools:context=".ui.SplashScreenActivity">
 
     <ImageView
-        android:id="@+id/iv_logo"
+        android:id="@+id/iv_splashscreen"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:contentDescription="@string/splashscreen"
@@ -16,6 +16,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

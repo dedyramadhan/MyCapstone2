@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstoneproject2.core.domain.usecase.MoviesUseCase
 import javax.inject.Inject
 
-class ViewModelFavoriteFactory @Inject constructor(private val moviesUseCase: MoviesUseCase): ViewModelProvider.NewInstanceFactory(){
+class ViewModelFavoriteFactory @Inject constructor(private val moviesUseCase: MoviesUseCase) :
+    ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {

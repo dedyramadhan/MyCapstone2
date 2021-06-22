@@ -9,9 +9,11 @@ import dagger.Module
 
 @Module(includes = [NetworkModule::class, DatabaseModule::class])
 abstract class RepositoryModule {
+
     @Binds
     abstract fun provideMovieUseCase(movieInteractor: MovieInteractor): MoviesUseCase
 
     @Binds
     abstract fun provideRepository(movieRepository: MovieRepository): IMovieRepository
+
 }

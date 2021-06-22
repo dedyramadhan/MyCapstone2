@@ -26,5 +26,4 @@ abstract class ViewModelModule {
     @ViewModelKey(DetailMovieViewModel::class)
     abstract fun bindDetailMoviesViewModel(viewModel: DetailMovieViewModel): ViewModel
 
-
 }

@@ -9,11 +9,14 @@ import javax.inject.Inject
 
 class MovieInteractor @Inject constructor(private val movieRepository: MovieRepository): MoviesUseCase {
 
-    override fun setFavoriteMovie(movieData: MovieModel, state: Boolean) = movieRepository.setFavoriteMovie(movieData, state)
+    override fun getAllMovies(): Flow<Resource<List<MovieModel>>> = movieRepository.getAllMovies()
+
+    override fun getMovieDetailByMovieId(movieId: Int): Flow<Resource<List<MovieModel>>> =
+        movieRepository.getMovieDetailByMovieId(movieId)
+
+    override fun setFavoriteMovie(movieData: MovieModel, state: Boolean) =
+        movieRepository.setFavoriteMovie(movieData, state)
 
     override fun getFavoriteMovie(): Flow<List<MovieModel>> = movieRepository.getFavoriteMovie()
 
-    override fun getAllMovies(): Flow<Resource<List<MovieModel>>> = movieRepository.getAllMovies()
-
-    override fun getMovieDetailByMovieId(movieId: Int): Flow<Resource<List<MovieModel>>> = movieRepository.getMovieDetailByMovieId(movieId)
 }

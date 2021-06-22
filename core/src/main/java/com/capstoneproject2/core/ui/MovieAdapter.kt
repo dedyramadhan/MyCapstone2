@@ -9,12 +9,15 @@ import com.capstoneproject2.core.R
 import com.capstoneproject2.core.databinding.ItemMoviesBinding
 import com.capstoneproject2.core.domain.model.MovieModel
 
-class MovieAdapter(private val listener: MovieAdapterClickListener): RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
+class MovieAdapter(private val listener: MovieAdapterClickListener) :
+    RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<MovieModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        return ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_movies, parent, false))
+        return ListViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_movies, parent, false)
+        )
     }
 
     override fun getItemCount(): Int = listData.size
@@ -31,13 +34,18 @@ class MovieAdapter(private val listener: MovieAdapterClickListener): RecyclerVie
         notifyDataSetChanged()
     }
 
-    inner class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemMoviesBinding.bind(itemView)
         fun bind(data: MovieModel) {
             with(itemView) {
                 Glide.with(context)
-                        .load(context.resources.getString(R.string.image_url_string, data.movieBackgroundImage))
-                        .into(binding.ivItemImage)
+                    .load(
+                        context.resources.getString(
+                            R.string.image_url_string,
+                            data.movieBackgroundImage
+                        )
+                    )
+                    .into(binding.ivItemImage)
                 binding.tvItemTitle.text = data.movieTitle
                 setOnClickListener {
                     listener.onMovieClickListener(listData[adapterPosition])

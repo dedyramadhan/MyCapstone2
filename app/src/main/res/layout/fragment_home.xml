@@ -40,8 +40,11 @@
                 <include layout="@layout/item_movies_placeholder" />
 
                 <include layout="@layout/item_movies_placeholder" />
+
             </LinearLayout>
+
         </ScrollView>
+
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <TextView

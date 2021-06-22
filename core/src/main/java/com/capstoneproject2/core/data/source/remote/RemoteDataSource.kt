@@ -15,6 +15,7 @@ import javax.inject.Inject
 
 @CoreScope
 class RemoteDataSource @Inject constructor(private val context: Context, private val apiService: ApiService){
+
     suspend fun getMovieDetail(movieId: Int): Flow<ApiResponse<List<MovieResponse>>> {
         return flow {
             try {
@@ -32,6 +33,7 @@ class RemoteDataSource @Inject constructor(private val context: Context, private
             }
         }.flowOn(Dispatchers.IO)
     }
+
     suspend fun getAllMovies(): Flow<ApiResponse<List<MovieResponse>>> {
         return flow {
             try {
@@ -48,6 +50,5 @@ class RemoteDataSource @Inject constructor(private val context: Context, private
             }
         }.flowOn(Dispatchers.IO)
     }
-
 
 }

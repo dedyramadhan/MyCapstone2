@@ -8,16 +8,28 @@ import javax.inject.Inject
 
 @CoreScope
 class LocalDataSource @Inject constructor(private val movieDao: MovieDao){
-    suspend fun insertMovie(movieList: List<MovieEntity>) { movieDao.insertMovies(movieList)}
+    suspend fun insertMovie(movieList: List<MovieEntity>) {
+        movieDao.insertMovies(movieList)
+    }
+
     fun getAllMovies(): Flow<List<MovieEntity>> = movieDao.getAllMovies()
-    fun getMovieDetailByMovieId(movieId: Int): Flow<List<MovieEntity>> = movieDao.getMovieDetailByMovieId(movieId)
+
+    fun getMovieDetailByMovieId(movieId: Int): Flow<List<MovieEntity>> =
+        movieDao.getMovieDetailByMovieId(movieId)
+
     fun setFavoriteMovie(movie: MovieEntity, newState: Boolean) {
         movie.movieIsFavorite = newState
         movieDao.updateFavoriteMovie(movie)
     }
+
     fun getFavoriteMovie(): Flow<List<MovieEntity>> = movieDao.getFavoriteMovies()
+
     fun setUpdateDetailMovie(movie: MovieEntity) {
         movieDao.updateDetailMovie(movie.movieId, true, movie.movieTodayDate)
     }
-    fun deleteMovie(date: String) { movieDao.deleteMovie(date) }
+
+    fun deleteMovie(date: String) {
+        movieDao.deleteMovie(date)
+    }
+
 }
